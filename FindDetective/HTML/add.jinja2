@@ -1,0 +1,25 @@
+{% extends "base.jinja2" %}
+{% block css %} {% set css = 'HTML/static/add.css' %}{% endblock %}
+{% block content %}
+    <form action="{{request.route_url('add',action=action)}}" method="post" class="form">
+            {% for error in form.title.errors %}
+                <div class="error">{{ error }}</div>
+            {% endfor %}
+
+            <div class="form-group">
+                {{ form.title(class_='form-control',placeholder="Тема") }}
+            </div>
+            </br>
+            {% for error in form.text.errors %}
+                 <div class="error">{{ error }}</div>
+            {% endfor %}
+
+            <div class="form-group">
+                 {{ form.text(class_='form-control',placeholder="Описание дела") }}
+            </div>
+            </br>
+            <div class="form-group">
+                <input type="submit" value="Добавить" class="btn btn-danger">
+            </div>
+    </form>
+{% endblock %}

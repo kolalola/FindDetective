@@ -1,0 +1,58 @@
+{% extends "base.jinja2" %}
+
+{% block title %} - Главная страница{% endblock %}
+{% block head%}
+{% endblock %}
+<style>
+  .list-group {
+        margin-bottom: 5px !important;
+        }
+
+  a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.active:focus {
+        color:#000 !important;
+        background-color:#fff !important;
+        }
+</style>
+{% block content %}
+{% if request.authenticated_userid %}
+        Welcome <strong>{{request.authenticated_userid}}</strong> ::
+        <a href="{{request.route_url('auth',action='out')}}">Sign Out</a>
+    {% else %}
+        <form action="{{request.route_url('auth',action='in')}}" method="post" class="form-inline">
+            <div class="form-group">
+                <input type="text" name="username" class="form-control" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" class="form-control" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Sign in" class="btn btn-danger">
+            </div>
+
+            <div class="form-group">
+                <a  href="/registration"> <input type="button" value="Registration" class="btn btn-danger"/> </a>
+            </div>
+
+        </form>
+    {% endif %}
+<br/>
+    <p><a href="/add"><button class="btn btn-danger">Добавить дело</button></a></p>
+    <br>
+    <div class="blog-list">
+        {% for post in posts %}
+            <div class="list-group" >
+                    <a href="/posts/{{ post.idPost }}" class="list-group-item active">
+                    <h4 class="list-group-item-heading">{{post.title}}
+                    {% if propose %}
+                    <div class=blog-list_item-button>
+                        <form action="/propose/{{ post.idPost }}" method="post" class="form-propose">
+                             <input type="submit" value="Propose" class="btn btn-default">
+                        </form>
+                    </div>
+                    {% endif %}
+                    </h4>
+                    </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

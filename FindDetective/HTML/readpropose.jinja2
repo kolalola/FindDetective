@@ -1,0 +1,12 @@
+{% extends "base.jinja2" %}
+{% block title %}- Заявка{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <h1>{{ propose.title }}</h1>
+    <div class="description">
+        {{propose.description}}
+    </div>
+    <p1>{{user.login}}<p1>
+{% endblock %}

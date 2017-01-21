@@ -1,0 +1,29 @@
+{% extends "base.jinja2" %}
+{% block title %}- Пост {% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <h2>{{ title }}</h2>
+    <p class="important">
+    {{ text }}
+    </p>
+    {% if post %}
+    <p>
+    <div class=delete_button>
+                     <form action="/delete/{{ post.idPost }}" method="post">
+                         <input type="submit" value="Delete" class="btn btn-danger">
+                     </form>
+                </div>
+    </p>
+    {% endif %}
+    {% if proposes %}
+    <p>ЗАЯВКИ</p>
+         <div class="list-group">
+         {% for propose in proposes %}
+                <a href="/requests/{{propose.idRequest}}" class="list-group-item"> {{ propose.title }}</a>
+         {% endfor %}
+         </div>
+    {% endif %}
+    <br><hr>
+{% endblock %}

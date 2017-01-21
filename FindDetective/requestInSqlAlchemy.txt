@@ -1,0 +1,50 @@
+Удаление
+user1 = DBSession.query(Users).filter_by(idUser=2).first()
+DBSession.delete(user1)
+Добавление
+DBSession.add(Users(login='Vasya',password='123',mail='hehe@mail.ru'))
+
+a href="/article/add" </a>
+
+
+<a href="/article/{{ post.id }}" class="blog-list__item-link">{{ post.title }}</a>
+                <div class="blog-list__item-action">
+                    <a href="/article/{{ article.id }}/edit" class="blog-list__item-edit">edit</a>
+                    <a href="/article/{{ article.id }}/delete" onclick="return confirm_delete();"
+                        class="blog-list__item-delete">delete</a>
+
+
+
+
+                            {% if logged_in %}
+      <a href="{{ request.current_route_url() }}/edit_post">
+      <h6>Edit post</h6></a>
+    {% endif %}
+    tags: {{ tags }}
+
+
+
+    #add
+    {% for error in form.title.errors %}
+            <div class="error">{{ error }}</div>
+        {% endfor %}
+            <div class="form-group">
+            <label for="Тема">{{ form.title.label }}</label>
+            {{ form.title(class_='form-control') }}
+        </div>
+
+        {% for error in form.text.errors %}
+            <div class="error">{{ error }}</div>
+        {% endfor %}
+
+        <div class="form-group">
+            <label for="text">{{ form.text.label }}</label>
+            {{ form.text(class_='form-control') }}
+        </div>
+
+
+
+
+
+        <script window.location ="HTML/jquery-3.1.1.js" media="all" rel="stylesheet" type="text/js"></script>
+    <link window.location ="bootstrap-3.3.7-dist/css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css">

@@ -1,0 +1,39 @@
+{% extends "base.jinja2" %}
+{% block title %} - Регистрация{% endblock %}
+{% block content %}
+
+    {% if request.authenticated_userid %}
+        Welcome <strong>{{request.authenticated_userid}}</strong> ::
+        <a href="{{request.route_url('auth',action='out')}}">Sign Out</a>
+    {% else %}
+        <form action="{{request.route_url('register')}}" method="post" class="form-inline">
+            <div class="form-group">
+                <input type="text" name="username" class="form-control" placeholder="Логин">
+            </div>
+            </br></br>
+            <div class="form-group">
+                <input type="password" name="password" class="form-control" placeholder="Пароль">
+            </div>
+            </br></br>
+            <div class="form-group">
+                <input type="text" name="mail" class="form-control" placeholder="Mail">
+            </div>
+            </br></br>
+            <div class="form-group">
+            <select name="role">
+                    <option > Пользователь</option>
+                    <option > Детектив </option>
+            </select>
+            </div>
+            </br></br>
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-default">
+            </div>
+
+        </form>
+    {% endif %}
+    {%if exist%}
+    </br>
+    {{exist}}
+    {% endif %}
+    {%endblock%}
