@@ -24,7 +24,7 @@ def BlogIndex(request):
         return {'posts': reversed(posts)}
 
 def ReadPost(request):
-    #username = request.authenticated_userid
+    username = request.authenticated_userid
     postid = request.matchdict['idPost']
     post = DBSession.query(Posts).filter_by(idPost=postid).first()
     proposes=[]
