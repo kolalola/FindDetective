@@ -16,6 +16,7 @@ from pyramid.authorization import ACLAuthorizationPolicy
 if __name__ == '__main__':
     authentication_policy = AuthTktAuthenticationPolicy('somesecret')
     authorization_policy = ACLAuthorizationPolicy()
+    k=0
     settings = {'sqlalchemy.url': 'sqlite:///finDetective.db'}
     config = Configurator(settings=settings,
                           authentication_policy=authentication_policy,
